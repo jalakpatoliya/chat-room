@@ -3,6 +3,7 @@ const http = require('http');
 const socketio = require('socket.io');
 const PORT = process.env.PORT || 5000
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
