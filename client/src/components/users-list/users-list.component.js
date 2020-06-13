@@ -5,14 +5,13 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Paper from '@material-ui/core/Paper';
 import { FixedSizeList } from 'react-window';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+
 let usersList = [];
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        // width: '100%',
-        // height: 600,
         width: 200,
-        // maxWidth: 200,
         backgroundColor: theme.palette.background.paper,
     },
 }));
@@ -22,6 +21,7 @@ function renderRow(props) {
 
     return (
         <ListItem button style={style} key={index}>
+            <FiberManualRecordIcon fontSize='small' style={{ color: 'green' }} />
             <ListItemText primary={`${usersList[index].name}`} />
         </ListItem>
     );

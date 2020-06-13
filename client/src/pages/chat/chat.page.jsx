@@ -6,6 +6,7 @@ import Messages from "../../components/messages/messages.component";
 import { Container } from "./chat.styles";
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
+import Paper from '@material-ui/core/Paper';
 
 let socket;
 
@@ -58,13 +59,19 @@ const ChatPage = ({ location }) => {
             height: '100vh',
         }}>
             <Container>
-                <Picker onClick={async (emoji, event) => {
-                    await setMessage(`${message}${emoji.native}`)
-                    console.log(message);
-                }} enableFrequentEmojiSort set='apple' style={{ width: '200px', position: 'relative', bottom: '20px', }} />
+                <Paper elevation={3} >
+                    <Picker
+                        perLine={2}
+                        title="Pick your emoji…"
+                        emoji="point_up"
+                        enableFrequentEmojiSort
+                        onClick={async (emoji, event) => setMessage(`${message}${emoji.native}`)}
+                        enableFrequentEmojiSort
+                        set='apple'
+                        style={{ width: '200px', position: 'relative', bottom: '20px', }} />
+                </Paper>
                 <Messages message={message} messages={messages} setMessage={setMessage} sendMessage={sendMessage} />
                 <UsersList users={users} />
-
             </Container>
         </div >
     )
