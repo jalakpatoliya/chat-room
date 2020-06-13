@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 let socket;
 
 const ChatPage = ({ location }) => {
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = '/';
     const [users, setusers] = useState([]);
     const [user, setUser] = useState({});
     const [messages, setMessages] = useState([]);
