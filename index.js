@@ -8,6 +8,19 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
+  })
+}
+
+app.get('/service-worker.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'build', 'service-worker.js'))
+})
+
 // 1. add connection
 io.on('connection', (socket) => {
   console.log('user connected');
