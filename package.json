@@ -7,8 +7,8 @@
     "client": "cd client && npm start",
     "server": "nodemon index.js",
     "build": "cd client && npm run build",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "start": "node server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run index\" \"npm run client\"",
+    "start": "node index.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "author": "",
