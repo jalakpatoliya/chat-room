@@ -26,7 +26,7 @@ app.get('/service-worker.js', (req, res) => {
 io.on('connection', (socket) => {
   console.log('user connected');
 
-  socket.on('join', ({ name, room }) => {
+  socket.on('join', ({ name, room }, callback) => {
     // 2. add user to userslist
     const { user, error } = addUser({ id: socket.id, name, room })
     if (error) return callback(error);

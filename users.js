@@ -4,9 +4,11 @@ const addUser = ({ id, name, room }) => {
     name = name.trim().toLowerCase();
     room = room.trim().toLowerCase();
 
-    const userExisting = users.find(user => (user.id == id && user.room == room));
+    const userExisting = users.find(user => (user.name == name && user.room == room));
 
     if (userExisting) {
+        console.log('existsing');
+
         return { error: 'Username already exist' }
     }
 

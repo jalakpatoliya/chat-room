@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import io from 'socket.io-client';
 import queryString from "query-string";
 import UsersList from '../../components/users-list/users-list.component';
@@ -7,6 +8,8 @@ import { Container } from "./chat.styles";
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import Paper from '@material-ui/core/Paper';
+import Alert from '@material-ui/lab/Alert';
+
 
 let socket;
 
@@ -17,6 +20,8 @@ const ChatPage = ({ location }) => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
 
+    const history = useHistory();
+
 
     //  Connect & join user to room
     useEffect(() => {
@@ -25,7 +30,8 @@ const ChatPage = ({ location }) => {
 
         socket.emit('join', { name, room }, (error) => {
             if (error) {
-                alert(error);
+                alert('Username already taken')
+                history.push("/");
             }
         })
 
